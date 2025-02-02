@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .message {
+            font-size: 2.5rem;
+            color: #d6336c;
+        }
+        .heart {
+            font-size: 10rem;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        #yes-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no-button {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <p>After all these clues and games, there’s only one question left:</p>
+        <div class="heart">❤️</div>
+        <p>Will you be my Valentine? 💌</p>
+        <div class="buttons">
+            <button id="yes-button">Yes</button>
+            <button id="no-button">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no-button');
+        const yesButton = document.getElementById('yes-button');
+
+        // Make the "No" button move away from the cursor
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        // Handle "Yes" button click
+        yesButton.addEventListener('click', () => {
+            alert("Yay! You've made me the happiest person ever! 💖");
+            // You can redirect her to a special page or do something else here
+        });
+
+        // Handle "No" button click (just in case she catches it!)
+        noButton.addEventListener('click', () => {
+            alert("Oh no! You can't say no! Try again! ❤️");
+        });
+    </script>
+</body>
+</html>

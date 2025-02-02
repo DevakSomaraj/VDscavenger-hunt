@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clue 3: Match the Hearts</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #d6336c;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #d6336c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .card.flipped {
+            background-color: #ffcccb;
+            transform: rotateY(180deg);
+        }
+        .card.matched {
+            background-color: #b32d5a;
+            cursor: default;
+        }
+        #next-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #next-button:hover {
+            background-color: #b32d5a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Match the Hearts ❤️</h1>
+    <p>Find all the matching pairs to reveal the next clue!</p>
+    <div class="game-board" id="game-board">
+        <!-- Cards will be generated here -->
+    </div>
+    <button id="next-button" onclick="goToFinal()">Next Clue</button>
+
+    <script>
+        const cards = ["❤️", "❤️", "💖", "💖", "💌", "💌", "🌸", "🌸"];
+        let flippedCards = [];
+        let matchedCards = [];
+
+        // Shuffle the cards
+        cards.sort(() => Math.random() - 0.5);
+
+        // Create the game board
+        const gameBoard = document.getElementById('game-board');
+        cards.forEach((emoji, index) => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.index = index;
+            card.textContent = emoji;
+            card.addEventListener('click', flipCard);
+            gameBoard.appendChild(card);
+        });
+
+        // Flip card logic
+        function flipCard() {
+            if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
+                this.classList.add('flipped');
+                flippedCards.push(this);
+
+                if (flippedCards.length === 2) {
+                    setTimeout(checkMatch, 500);
+                }
+            }
+        }
+
+        // Check if cards match
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            if (card1.textContent === card2.textContent) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedCards.push(card1, card2);
+
+                if (matchedCards.length === cards.length) {
+                    document.getElementById('next-button').style.display = 'block';
+                }
+            } else {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+            }
+            flippedCards = [];
+        }
+
+        // Go to the final page
+        function goToFinal() {
+            window.location.href = 'final.html';
+        }
+    </script>
+</body>
+</html>

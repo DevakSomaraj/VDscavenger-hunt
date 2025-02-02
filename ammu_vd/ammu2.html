@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clue 2: Word Scramble</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .clue {
+            font-size: 1.5rem;
+            color: #d6336c;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #b32d5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="clue">
+        <p>Great job! Here's your next challenge:</p>
+        <p>Unscramble this word: <strong>MUIAKOEMOC</strong></p>
+        <p>(Hint: It's something I called you, even though its rare(give the answer with no space)  ❤️)</p>
+        <input type="text" id="answer" placeholder="Enter the unscrambled word">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase();
+            if (answer === "ammucookie" || answer === "AMMUCOOKIE") { // Replace with the correct word
+                document.getElementById('result').innerHTML = "Correct! Here's your next clue: <a href='ammu3.html'>Click here</a>";
+            } else {
+                document.getElementById('result').innerHTML = "Try again! ❤️";
+            }
+        }
+    </script>
+</body>
+</html>

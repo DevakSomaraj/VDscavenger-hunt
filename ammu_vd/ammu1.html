@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clue 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .clue {
+            font-size: 1.5rem;
+            color: #d6336c;
+        }
+    </style>
+</head>
+<body>
+    <div class="clue">
+        <p>Welcome to Devak's Valentine's adventure! 🕵️‍♀️</p>
+        <p>First clue if we both were a fictional couple, who would we be? (note:Type it like "name1 and name2" as answer, and give space after each word, no capital letter)</p>
+        <input type="text" id="answer" placeholder="Enter the word">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase();
+            if (answer === "joker and harley quinn") { // Replace with the correct word
+                document.getElementById('result').innerHTML = "Correct! Here's your next clue: <a href='ammu2.html'>Click here</a>";
+            } else {
+                document.getElementById('result').innerHTML = "Try again! ❤️";
+            }
+        }
+    </script>
+</body>
+</html>
